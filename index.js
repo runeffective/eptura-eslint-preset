@@ -21,8 +21,7 @@ module.exports = {
             'overrides': {'constructors': 'no-public'}
           }
         ],
-        '@typescript-eslint/indent': 'error',
-        '@typescript-eslint/interface-name-prefix': 'error',
+        '@typescript-eslint/indent': ['error', 2],
         '@typescript-eslint/member-delimiter-style': [
           'error',
           {
@@ -88,7 +87,15 @@ module.exports = {
         '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/type-annotation-spacing': 'error',
         '@typescript-eslint/unbound-method': ['error', {'ignoreStatic': true}],
-        '@typescript-eslint/unified-signatures': 'error'
+        '@typescript-eslint/unified-signatures': 'error',
+        'import/no-unresolved': 'off',
+        'import/extensions': 'off',
+        'max-len': ["error", { "code": 140, "tabWidth": 2 }],
+        "space-before-function-paren": ["error", {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }],
       }
     }
   }

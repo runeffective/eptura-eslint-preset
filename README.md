@@ -10,19 +10,20 @@ Add the following to your .npmrc file (either in your project or your home direc
 
 Then run the following commands:
 - `yarn install @runeffective/plugin-eslint-preset -D`
+- `npx install-peerdeps --dev @runeffective/eslint-plugin`
 
 Or if you are using npm:
 - `npm install @runeffective/plugin-eslint-preset -D`
+- `npx install-peerdeps --dev @runeffective/eslint-plugin`
 
 ## Usage
 
 in your `.eslintrc` file, add the following:
 ```
 {
-  extends: ['plugin:@runeffective/eslint-preset'],
+  extends: ['plugin:@runeffective/recommended'],
   parserOptions: {
     project: ['./tsconfig.json'],
-    sourceType: 'module'
   },
   rules: {
     // you can add your own custom rules
@@ -34,7 +35,7 @@ in your `.eslintrc` file, add the following:
 ## Vanilla JS Usage
 ```
 {
-  extends: ['./node_modules/@runeffective/plugin-eslint-preset/js-only.js'],
+  extends: ['plugin:@runeffective/jsOnly'],
   rules: {
     // you can add your own custom rules
     // or overwrite rules from the app here
@@ -51,3 +52,20 @@ module.exports = {
   ...require('@runeffective/plugin-eslint-preset/prettierrc')
 };
 ```
+
+## Other topics
+
+### This config and jetbrains IDEs
+For some reason, this config with jetbrains IDEs can cause some weirdness, especially when using nx.
+To fix this, use the following in your eslint config (you will have to use .eslintrc.js instead of json):
+
+```
+parserOptions: {
+  project: ['./tsconfig.json'],
+  tsconfigRootDir: __dirname,
+}
+```
+
+### Import typescript resolver
+To simplify things, this plugin has turned off the `import/no-unresolved` rule as this does not work with typescript 
+files. To enable this, simply install the 
