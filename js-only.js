@@ -5,7 +5,7 @@ module.exports = {
     'arrow-parens': ['off', 'as-needed'],
     'camelcase': 'error',
     'comma-dangle': 'error',
-    'complexity': ['error', 3],
+    'complexity': ['error', 8],
     'constructor-super': 'error',
     'curly': ['error', 'multi-line'],
     'dot-notation': 'error',
