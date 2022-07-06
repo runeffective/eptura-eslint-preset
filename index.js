@@ -90,12 +90,13 @@ module.exports = {
         '@typescript-eslint/unified-signatures': 'error',
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
-        'max-len': ["error", { "code": 140, "tabWidth": 2 }],
-        "space-before-function-paren": ["error", {
-          "anonymous": "always",
-          "named": "never",
-          "asyncArrow": "always"
+        'max-len': ['error', { 'code': 140, 'tabWidth': 2 }],
+        'space-before-function-paren': ['error', {
+          'anonymous': 'always',
+          'named': 'never',
+          'asyncArrow': 'always'
         }],
+        'no-undef': 'off'
       }
     }
   }
