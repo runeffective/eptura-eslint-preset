@@ -6,6 +6,7 @@ Add the following to your .npmrc file (either in your project or your home direc
 ```
   @runeffective:registry=https://npm.pkg.github.com
 ```
+(you can also copy the file in this repo)
 
 Then run the following commands:
 - `yarn install @runeffective/plugin-eslint-preset -D`
@@ -50,5 +51,3 @@ module.exports = {
   ...require('@runeffective/plugin-eslint-preset/prettierrc')
 };
 ```
-
-

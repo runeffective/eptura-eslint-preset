@@ -38,6 +38,21 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@runeffective/plugin-eslint-preset@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@runeffective/plugin-eslint-preset/0.1.0/ade9c2e08d51a0e4994dfc86dbfa38582f3681d3b6851fb76d126935ef4acda8#0443b4bdba3b1893ab1e02d2cfb9e95eb57d1a99"
+  integrity sha512-KqzoZAj1dSOhZlsJGjAoI5nmUVuBwHklwaZeB1lZ+lE8yxFs2ynvEHAQ2LfZvG3SeXjTpciRUy9dj7I73AAFtg==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^5.30.5"
+    "@typescript-eslint/parser" "^5.30.5"
+    eslint-config-airbnb "19.0.4"
+    eslint-config-prettier "^8.5.0"
+    eslint-plugin-import "^2.25.3"
+    eslint-plugin-jsx-a11y "^6.5.1"
+    eslint-plugin-prefer-arrow "^1.2.3"
+    eslint-plugin-react "^7.28.0"
+    eslint-plugin-react-hooks "^4.3.0"
+
 "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -912,11 +927,6 @@ picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
-
-prettier@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
 prop-types@^15.8.1:
   version "15.8.1"
