@@ -91,6 +91,8 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
         'max-len': ['error', { 'code': 140, 'tabWidth': 2 }],
+        'react/function-component-definition': [2, { 'namedComponents': 'arrow-function' }],
+        'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
         'space-before-function-paren': ['error', {
           'anonymous': 'always',
           'named': 'never',
