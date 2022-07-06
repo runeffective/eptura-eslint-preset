@@ -98,7 +98,8 @@ module.exports = {
           'named': 'never',
           'asyncArrow': 'always'
         }],
-        'no-undef': 'off'
+        'no-nested-ternary': 'off',
+        'no-undef': 'off',
       }
     }
   }
