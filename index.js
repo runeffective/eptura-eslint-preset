@@ -90,6 +90,8 @@ module.exports = {
         '@typescript-eslint/unified-signatures': 'error',
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'import/prefer-default-export': 'off',
         'max-len': ['error', { 'code': 140, 'tabWidth': 2 }],
         'react/function-component-definition': [2, { 'namedComponents': 'arrow-function' }],
         'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
@@ -100,6 +102,9 @@ module.exports = {
         }],
         'no-nested-ternary': 'off',
         'no-undef': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react/jsx-wrap-multilines': 'off',
+        'jest/expect-expect': 'off'
       }
     }
   }
