@@ -22,11 +22,12 @@ steps:
     title: Publish package to GitHub registry
     image: node:18
     stage: publish
-    working_directory: /home/node/eptura-eslint-preset
     when:
       branch:
         only:
           - main
     commands:
       - npm set //npm.pkg.github.com/:_authToken ${{GITHUB_TOKEN}}
+      - ls
+      - cd eptura-eslint-preset
       - npm publish
