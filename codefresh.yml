@@ -11,11 +11,11 @@ steps:
   clone:
     title: Cloning repository
     type: git-clone
-    repo: ManagerPlus/asset-settings
+    repo: runeffective/spaceiq-eslint-preset
     # CF_BRANCH value is auto set when pipeline is triggered
     # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
     revision: ${{CF_BRANCH}}
-    git: ManagerPlus
+    git: spaceiqbot
     stage: clone
 
   publish:
