@@ -36,6 +36,7 @@ module.exports = {
           }
         ],
         '@typescript-eslint/member-ordering': [
+
           'error',
           {
             'default': [
@@ -47,7 +48,6 @@ module.exports = {
               'private-static-field',
 
               'public-abstract-field',
-              'private-abstract-field',
               'protected-abstract-field',
 
               'public-instance-field',
@@ -60,8 +60,6 @@ module.exports = {
 
               'public-abstract-method',
               'protected-abstract-method',
-              'private-abstract-method',
-
               'public-instance-method',
               'protected-instance-method',
               'private-instance-method'
