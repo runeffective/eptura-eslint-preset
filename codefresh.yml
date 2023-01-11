@@ -22,7 +22,7 @@ steps:
     title: Publish package to GitHub registry
     image: node:18
     stage: publish
-    working_directory: /home/node
+    working_directory: /home/node/evo-design-system
     when:
       branch:
         only:
