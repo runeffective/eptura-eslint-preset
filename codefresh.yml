@@ -28,6 +28,5 @@ steps:
           - main
     commands:
       - npm set //npm.pkg.github.com/:_authToken ${{GITHUB_TOKEN}}
-      - ls
       - cd eptura-eslint-preset
       - npm publish
