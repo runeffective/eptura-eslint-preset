@@ -119,5 +119,13 @@ module.exports = {
     'spaced-comment': 'error',
     'use-isnan': 'error',
     'valid-typeof': 'error',
+    'consistent-return': 'off',
+    'array-callback-return': 'off',
+    'no-return-assign': 'off',
+    'default-case': 'off',
+    'no-void': 'off',
+    'object-curly-newline': 'off',
+    'operator-linebreak': 'off',
+    'function-paren-newline': 'off'
   }
 }
