@@ -26,7 +26,7 @@ steps:
     when:
       branch:
         only:
-          - master
+          - main
     commands:
       - npm set //npm.pkg.github.com/:_authToken ${{GITHUB_TOKEN}}
       - rm -rf ./package.json
