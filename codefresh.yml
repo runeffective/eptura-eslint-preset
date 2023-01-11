@@ -29,6 +29,4 @@ steps:
           - main
     commands:
       - npm set //npm.pkg.github.com/:_authToken ${{GITHUB_TOKEN}}
-      - rm -rf ./package.json
-      - mv ./apps/web-marketplace/publish.json ./package.json
       - npm publish
