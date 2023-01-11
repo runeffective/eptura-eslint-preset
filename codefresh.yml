@@ -20,7 +20,6 @@ steps:
 
   publish:
     title: Publish package to GitHub registry
-    image: ${{build}}
     stage: publish
     working_directory: /home/node
     when:
