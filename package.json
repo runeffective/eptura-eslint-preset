@@ -1,6 +1,6 @@
 {
   "name": "@runeffective/eslint-plugin",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Lint preset and other suggested configs for SpaceIQ javascript projects",
   "main": "index.js",
   "repository": {
