@@ -99,12 +99,6 @@ module.exports = {
     'no-var': 'error',
     'object-shorthand': 'error',
     'one-var': ['error', 'never'],
-    'prefer-arrow/prefer-arrow-functions': [
-      'warn',
-      {
-        'singleReturnOnly': true
-      }
-    ],
     'prefer-const': [
       'error',
       {
