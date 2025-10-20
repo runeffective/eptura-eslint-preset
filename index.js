@@ -1,22 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
-const { FlatCompat } = require("@eslint/eslintrc");
 const js = require("@eslint/js");
-const tseslint = require("@typescript-eslint/eslint-plugin");
-const tsParser = require("@typescript-eslint/parser");
+const tseslint = require("typescript-eslint");
 const prettierConfig = require("eslint-config-prettier");
 const reactPlugin = require("eslint-plugin-react");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
 const importPlugin = require("eslint-plugin-import");
+const airbnbExtended = require("eslint-config-airbnb-extended");
 
 const jsOnly = require("./js-only");
-
-// Initialize FlatCompat for backward compatibility with extends configs
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
 
 // TypeScript specific
 const typescriptRules = {
@@ -71,19 +64,15 @@ module.exports = {
     jsOnly: jsOnly,
     recommended: [
       js.configs.recommended,
-      ...compat.extends("plugin:@typescript-eslint/recommended"),
-      ...compat.extends("airbnb-base"),
+      ...tseslint.configs.recommended,
+      ...airbnbExtended.configs.base,
       {
         plugins: {
-          "@typescript-eslint": tseslint,
           import: importPlugin,
         },
         languageOptions: {
-          parser: tsParser,
-          parserOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module",
-          },
+          ecmaVersion: "latest",
+          sourceType: "module",
         },
         rules: {
           ...jsOnly.rules,
@@ -94,22 +83,19 @@ module.exports = {
     ],
     "recommended-react": [
       js.configs.recommended,
-      ...compat.extends("plugin:@typescript-eslint/recommended"),
-      ...compat.extends("airbnb"),
-      ...compat.extends("plugin:react/recommended"),
-      ...compat.extends("plugin:react-hooks/recommended"),
+      ...tseslint.configs.recommended,
+      ...airbnbExtended.configs.react,
+      reactPlugin.configs.flat.recommended,
+      reactPlugin.configs.flat["jsx-runtime"],
       {
         plugins: {
-          "@typescript-eslint": tseslint,
-          react: reactPlugin,
           "react-hooks": reactHooksPlugin,
           import: importPlugin,
         },
         languageOptions: {
-          parser: tsParser,
+          ecmaVersion: "latest",
+          sourceType: "module",
           parserOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module",
             ecmaFeatures: {
               jsx: true,
             },
@@ -123,6 +109,7 @@ module.exports = {
         rules: {
           ...jsOnly.rules,
           ...typescriptRules,
+          ...reactHooksPlugin.configs.recommended.rules,
         },
       },
       prettierConfig,

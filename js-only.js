@@ -1,3 +1,4 @@
+// ESLint 9 compatible rules
 module.exports = {
   rules: {
     "arrow-body-style": "error",
