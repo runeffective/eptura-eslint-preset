@@ -1,109 +1,131 @@
-const jsOnly = require('./js-only');
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-unresolved */
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
+const tseslint = require("@typescript-eslint/eslint-plugin");
+const tsParser = require("@typescript-eslint/parser");
+const prettierConfig = require("eslint-config-prettier");
+const reactPlugin = require("eslint-plugin-react");
+const reactHooksPlugin = require("eslint-plugin-react-hooks");
+const importPlugin = require("eslint-plugin-import");
+
+const jsOnly = require("./js-only");
+
+// Initialize FlatCompat for backward compatibility with extends configs
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+});
+
+// TypeScript specific
+const typescriptRules = {
+  indent: "off",
+  "no-unused-vars": "off", // Turn off base rule as it can report incorrect errors in TypeScript
+  "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+  "@typescript-eslint/no-explicit-any": "warn",
+  "@typescript-eslint/explicit-module-boundary-types": "off",
+  "@typescript-eslint/no-non-null-assertion": "off",
+
+  // React specific
+  "react/react-in-jsx-scope": "off", // Not needed in React 17+
+  "react/prop-types": "off", // We use TypeScript for props validation
+  "react/function-component-definition": [
+    2,
+    { namedComponents: "arrow-function" },
+  ],
+  "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
+  "react/jsx-one-expression-per-line": "off",
+  "react/no-array-index-key": "off",
+  "react/require-default-props": "off",
+  "react/jsx-indent": "off",
+  "react/jsx-props-no-spreading": "off",
+  "react/jsx-wrap-multilines": "off",
+  "react/jsx-no-useless-fragment": "off",
+  "react-hooks/exhaustive-deps": "warn",
+
+  // Import rules
+  "import/extensions": "off",
+  "import/no-unresolved": "off",
+  "import/no-extraneous-dependencies": "off",
+  "import/prefer-default-export": "off",
+  "import/no-default-export": "off", // Allow default exports for route files
+
+  // Other overrides
+  "max-len": ["error", { code: 140, tabWidth: 2 }],
+  "space-before-function-paren": [
+    "error",
+    {
+      anonymous: "always",
+      named: "never",
+      asyncArrow: "always",
+    },
+  ],
+  "no-nested-ternary": "off",
+  "no-undef": "off",
+  "jest/expect-expect": "off",
+};
 
 module.exports = {
   configs: {
     jsOnly: jsOnly,
-    recommended: {
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'airbnb'],
-      rules: {
-        ...jsOnly.rules,
-        indent: 'off',
-        '@typescript-eslint/adjacent-overload-signatures': 'error',
-        '@typescript-eslint/array-type': 'error',
-        '@typescript-eslint/await-thenable': 'error',
-        '@typescript-eslint/ban-types': 'error',
-        '@typescript-eslint/consistent-type-assertions': 'error',
-        '@typescript-eslint/consistent-type-definitions': 'error',
-        '@typescript-eslint/explicit-member-accessibility': [
-          'error',
-          {
-            'accessibility': 'explicit',
-            'overrides': {'constructors': 'no-public'}
-          }
-        ],
-        '@typescript-eslint/indent': ['error', 2],
-        '@typescript-eslint/member-delimiter-style': [
-          'error',
-          {
-            'multiline': {
-              'delimiter': 'semi',
-              'requireLast': true
+    recommended: [
+      js.configs.recommended,
+      ...compat.extends("plugin:@typescript-eslint/recommended"),
+      ...compat.extends("airbnb-base"),
+      {
+        plugins: {
+          "@typescript-eslint": tseslint,
+          import: importPlugin,
+        },
+        languageOptions: {
+          parser: tsParser,
+          parserOptions: {
+            ecmaVersion: "latest",
+            sourceType: "module",
+          },
+        },
+        rules: {
+          ...jsOnly.rules,
+          ...typescriptRules,
+        },
+      },
+      prettierConfig,
+    ],
+    "recommended-react": [
+      js.configs.recommended,
+      ...compat.extends("plugin:@typescript-eslint/recommended"),
+      ...compat.extends("airbnb"),
+      ...compat.extends("plugin:react/recommended"),
+      ...compat.extends("plugin:react-hooks/recommended"),
+      {
+        plugins: {
+          "@typescript-eslint": tseslint,
+          react: reactPlugin,
+          "react-hooks": reactHooksPlugin,
+          import: importPlugin,
+        },
+        languageOptions: {
+          parser: tsParser,
+          parserOptions: {
+            ecmaVersion: "latest",
+            sourceType: "module",
+            ecmaFeatures: {
+              jsx: true,
             },
-            'singleline': {
-              'delimiter': 'semi',
-              'requireLast': false
-            }
-          }
-        ],
-        '@typescript-eslint/member-ordering': [
-
-          'error',
-          {
-            'default': [
-              'public-static-method',
-              'protected-static-method',
-              'private-static-method',
-              'public-static-field',
-              'protected-static-field',
-              'private-static-field',
-
-              'public-abstract-field',
-              'protected-abstract-field',
-
-              'public-instance-field',
-              'protected-instance-field',
-              'private-instance-field',
-
-              'public-constructor',
-              'protected-constructor',
-              'private-constructor',
-
-              'public-abstract-method',
-              'protected-abstract-method',
-              'public-instance-method',
-              'protected-instance-method',
-              'private-instance-method'
-            ]
-          }
-        ],
-        '@typescript-eslint/no-empty-function': 'error',
-        '@typescript-eslint/no-empty-interface': 'error',
-        '@typescript-eslint/no-explicit-any': 'error',
-        '@typescript-eslint/no-floating-promises': 'error',
-        '@typescript-eslint/no-misused-new': 'error',
-        '@typescript-eslint/no-namespace': 'error',
-        '@typescript-eslint/no-parameter-properties': 'off',
-        '@typescript-eslint/no-unnecessary-qualifier': 'error',
-        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-        '@typescript-eslint/no-use-before-define': 'error',
-        '@typescript-eslint/no-var-requires': 'error',
-        '@typescript-eslint/prefer-for-of': 'error',
-        '@typescript-eslint/prefer-function-type': 'error',
-        '@typescript-eslint/prefer-namespace-keyword': 'error',
-        '@typescript-eslint/quotes': ['error', 'single', {'allowTemplateLiterals': true, 'avoidEscape': true}],
-        '@typescript-eslint/semi': ['error'],
-        '@typescript-eslint/triple-slash-reference': 'error',
-        '@typescript-eslint/type-annotation-spacing': 'error',
-        '@typescript-eslint/unbound-method': ['error', {'ignoreStatic': true}],
-        '@typescript-eslint/unified-signatures': 'error',
-        'import/no-unresolved': 'off',
-        'import/extensions': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        'import/prefer-default-export': 'off',
-        'max-len': ['error', { 'code': 140, 'tabWidth': 2 }],
-        'react/function-component-definition': [2, { 'namedComponents': 'arrow-function' }],
-        'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
-        'space-before-function-paren': ['error', {
-          'anonymous': 'always',
-          'named': 'never',
-          'asyncArrow': 'always'
-        }],
-        'no-nested-ternary': 'off',
-        'no-undef': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'react/jsx-wrap-multilines': 'off',
-        'jest/expect-expect': 'off'
-      }
-    }
-  }
-}
+          },
+        },
+        settings: {
+          react: {
+            version: "detect",
+          },
+        },
+        rules: {
+          ...jsOnly.rules,
+          ...typescriptRules,
+        },
+      },
+      prettierConfig,
+    ],
+  },
+};

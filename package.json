@@ -1,6 +1,6 @@
 {
   "name": "@runeffective/eslint-plugin",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Lint preset and other suggested configs for SpaceIQ javascript projects",
   "main": "index.js",
   "repository": {
@@ -14,16 +14,11 @@
   },
   "homepage": "https://github.com/runeffective/spaceiq-eslint-preset#readme",
   "peerDependencies": {
-    "eslint": ">=7",
-    "prettier": ">=2",
-    "@typescript-eslint/eslint-plugin": ">=5",
-    "@typescript-eslint/parser": ">=5",
+    "eslint": ">=8",
+    "prettier": ">=3",
     "eslint-config-airbnb": ">=19",
-    "eslint-config-prettier": ">=8",
-    "eslint-plugin-import": ">=2",
-    "eslint-plugin-jsx-a11y": ">=6",
-    "eslint-plugin-prefer-arrow": ">=1",
-    "eslint-plugin-react": ">=7",
-    "eslint-plugin-react-hooks": ">=4"
+    "eslint-config-prettier": ">=10",
+    "eslint-plugin-import": "^>=2",
+    "eslint-plugin-jsx-a11y": ">=6"
   }
 }
