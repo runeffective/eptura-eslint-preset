@@ -65,7 +65,7 @@ module.exports = {
     recommended: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      ...airbnbExtended.configs.base,
+      airbnbExtended.configs.base,
       {
         plugins: {
           import: importPlugin,
@@ -84,7 +84,7 @@ module.exports = {
     "recommended-react": [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      ...airbnbExtended.configs.react,
+      airbnbExtended.configs.react,
       reactPlugin.configs.flat.recommended,
       reactPlugin.configs.flat["jsx-runtime"],
       {
