@@ -1,6 +1,6 @@
 {
   "name": "@runeffective/eslint-plugin",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Lint preset and other suggested configs for SpaceIQ javascript projects",
   "main": "index.js",
   "repository": {
@@ -14,15 +14,24 @@
   },
   "homepage": "https://github.com/runeffective/spaceiq-eslint-preset#readme",
   "peerDependencies": {
-    "eslint": ">=9",
-    "prettier": ">=3",
-    "eslint-config-airbnb-extended": ">=1",
-    "eslint-config-prettier": ">=10",
-    "eslint-plugin-import": ">=2",
-    "eslint-plugin-jsx-a11y": ">=6",
     "@typescript-eslint/eslint-plugin": ">=8",
     "@typescript-eslint/parser": ">=8",
-    "eslint-plugin-react": ">=7",
-    "eslint-plugin-react-hooks": ">=4"
+    "eslint": ">=9",
+    "eslint-config-airbnb-extended": "^2.3.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": ">=6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "prettier": ">=3"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.38.0",
+    "@stylistic/eslint-plugin": "^3.1.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "typescript-eslint": "^8.46.2"
   }
 }

@@ -7,7 +7,6 @@ const prettierConfig = require("eslint-config-prettier");
 const reactPlugin = require("eslint-plugin-react");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
 const importPlugin = require("eslint-plugin-import");
-const airbnbExtended = require("eslint-config-airbnb-extended");
 
 const jsOnly = require("./js-only");
 
@@ -64,9 +63,8 @@ module.exports = {
     jsOnly: jsOnly,
     recommended: [
       js.configs.recommended,
-      ...tseslint.configs.recommended,
-      airbnbExtended.configs.base,
       {
+        files: ["**/*.{ts,tsx,js,jsx,mjs,cjs}"],
         plugins: {
           import: importPlugin,
         },
@@ -76,18 +74,38 @@ module.exports = {
         },
         rules: {
           ...jsOnly.rules,
-          ...typescriptRules,
+          "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+          "@typescript-eslint/no-explicit-any": "warn",
+          "@typescript-eslint/explicit-module-boundary-types": "off",
+          "@typescript-eslint/no-non-null-assertion": "off",
+          // Import rules
+          "import/extensions": "off",
+          "import/no-unresolved": "off",
+          "import/no-extraneous-dependencies": "off",
+          "import/prefer-default-export": "off",
+          "import/no-default-export": "off",
+          // Other overrides
+          "max-len": ["error", { code: 140, tabWidth: 2 }],
+          "space-before-function-paren": [
+            "error",
+            {
+              anonymous: "always",
+              named: "never",
+              asyncArrow: "always",
+            },
+          ],
+          "no-nested-ternary": "off",
+          "no-undef": "off",
         },
       },
       prettierConfig,
     ],
     "recommended-react": [
       js.configs.recommended,
-      ...tseslint.configs.recommended,
-      airbnbExtended.configs.react,
       reactPlugin.configs.flat.recommended,
       reactPlugin.configs.flat["jsx-runtime"],
       {
+        files: ["**/*.{tsx,jsx}"],
         plugins: {
           "react-hooks": reactHooksPlugin,
           import: importPlugin,
